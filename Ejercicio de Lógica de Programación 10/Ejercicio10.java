@@ -63,16 +63,17 @@ public class Ejercicio10 {
 
         // Crear una lista de las palabras disponibles
         List<String> palabrasDisponibles = new ArrayList<>(diccionario.keySet());
+        // Crear una lista de las palabras seleccionadas
         List<String> palabrasSelecc = new ArrayList<>();
         int numPalabras = 5;
         Random rand = new Random();
 
         // Seleccionar 5 palabras al azar del diccionario sin que se repitan
         for (int i = 0; i < numPalabras; i++) {
-            int id = rand.nextInt(palabrasDisponibles.size());
-            String palabraEsp = palabrasDisponibles.get(id);
-            palabrasSelecc.add(palabraEsp);
-            palabrasDisponibles.remove(id);
+            int id = rand.nextInt(palabrasDisponibles.size());  // Generar un número aleatorio dentro del rango de palabras disponibles
+            String palabraEsp = palabrasDisponibles.get(id);    // Obtener la palabra en español en la posición del número aleatorio
+            palabrasSelecc.add(palabraEsp);                    // Agregar la palabra aleatoria en español a la lista de palabras seleccionadas
+            palabrasDisponibles.remove(id);                   // Eliminar la palabra aleatoria de la lista de palabras disponibles para evitar que se repita
         }
 
         Scanner scan = new Scanner(System.in);
@@ -83,7 +84,7 @@ public class Ejercicio10 {
         for (int i = 0; i < numPalabras; i++) {
             System.out.print("Traduzca '" + palabrasSelecc.get(i) + "' al inglés: ");
             String respuestaUsuario = scan.nextLine();
-            String traduccionCorrecta = diccionario.get(palabrasSelecc.get(i));
+            String traduccionCorrecta = diccionario.get( palabrasSelecc.get(i) ); // Obtener la traducción de la palabra seleccionada dentro del diccionario
 
             // Comparar las palabras sin importar mayúsculas y minúsculas
             if (respuestaUsuario.equalsIgnoreCase(traduccionCorrecta)) {
